@@ -57,4 +57,13 @@ try {
             echo json_encode(['success' => $result]);
             break;
             
-       
+               default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+            break;
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+}
+?>
